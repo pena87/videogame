@@ -345,6 +345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cerditoRB: {fileID: 0}
+  maxVelocidad: 10
   walkingSpeed: 2
   jumpSpeed: 6
 --- !u!1 &2121456732
