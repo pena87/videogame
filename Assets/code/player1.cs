@@ -8,18 +8,22 @@ public class player1 : MonoBehaviour
     public float maxVelocidad;
     public float walkingSpeed;
     public float jumpSpeed;
+
+    bool voltearCerdo = true;
+    SpriteRenderer cerdoRender; 
     
 
     // Start is called before the first frame update
     void Start()
     {
-
-        cerditoRB = GetComponent<Rigidbody2D>(); 
+        cerditoRB = GetComponent<Rigidbody2D>();
+        cerdoRender = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        float mover = Input.GetAxis("Horizontal");
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         { // x-axis movement
@@ -41,10 +45,25 @@ public class player1 : MonoBehaviour
             cerditoRB.velocity = v;
         }
 
+        if (mover > 0 && !voltearCerdo) {
+
+            Voltear();
+        }
+        else if (mover < 0 && voltearCerdo) {
+
+            Voltear();
+        }
 
 
-        //float mover = Input.GetAxis("Horizontal");
-        //cerditoRB.velocity = new Vector2(mover * maxVelocidad, cerditoRB.velocity.y );
-        // cerditoRB.velocity = new Vector2(mover * maxVelovidad, cerditoRB.velocity.y);
+
+       
     }
+
+    void Voltear()
+    {
+
+        voltearCerdo = !voltearCerdo;
+        cerdoRender.flipX = !cerdoRender.flipX;
+    }
+
 }
